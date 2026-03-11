@@ -52,7 +52,23 @@ npm install
 
 ---
 
-### Paso 3 — Configurar la base de datos
+### Paso 3 — Configurar variables de entorno
+
+Dentro de la carpeta `backend/`, clona el archivo de ejemplo y ajusta la contraseña si es necesario:
+
+```bash
+# Windows
+copy .env.example .env
+
+# Mac / Linux
+cp .env.example .env
+```
+
+Abre `backend/.env` y verifica que `DATABASE_URL` contenga la contraseña correcta de tu base de datos.
+
+---
+
+### Paso 4 — Configurar la base de datos
 
 Ejecuta estos 3 comandos **en orden** desde la carpeta `backend/`:
 
@@ -72,7 +88,7 @@ Deberías ver: `✅ 7 juegos insertados correctamente`
 
 ---
 
-### Paso 4 — Arrancar el backend
+### Paso 5 — Arrancar el backend
 
 ```bash
 npm run dev
@@ -91,7 +107,7 @@ Comprueba que funciona abriendo: http://localhost:3000/health
 
 ---
 
-### Paso 5 — Instalar y arrancar el frontend
+### Paso 6 — Instalar y arrancar el frontend
 
 Abre una **nueva terminal** (deja el backend corriendo en la anterior):
 
