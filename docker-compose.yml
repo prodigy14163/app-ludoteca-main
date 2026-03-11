@@ -1,0 +1,26 @@
+version: "3.8"
+
+# Docker Compose levanta PostgreSQL para el proyecto.
+#
+# NOTAS IMPORTANTES:
+# - Las credenciales están hardcodeadas aquí (no dependen de variables externas)
+# - Usamos el puerto 5433 en el host para evitar conflictos con otras instancias de PostgreSQL
+# - El puerto interno del contenedor siempre es 5432 (estándar de PostgreSQL)
+# - Los datos persisten en un volumen aunque reinicies el contenedor
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: ludoteca_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ludoteca_user
+      POSTGRES_PASSWORD: ludoteca_password
+      POSTGRES_DB: ludoteca_db
+    ports:
+      - "5433:5432"   # host:contenedor — accede desde localhost:5433
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

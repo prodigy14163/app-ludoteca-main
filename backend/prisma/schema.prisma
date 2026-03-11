@@ -1,0 +1,34 @@
+// Prisma Schema — define la estructura de la base de datos
+// Prisma lee este archivo y genera:
+//   1. Las migraciones SQL (npm run db:migrate)
+//   2. El cliente TypeScript tipado (npm run db:generate)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Lee la URL desde backend/.env
+}
+
+// Modelo principal: representa un juego en la ludoteca
+model Game {
+  id              Int      @id @default(autoincrement())
+  nombre          String   @db.VarChar(150)
+  tipo            String   @db.VarChar(100)
+  numeroJugadores Int
+  edadMinima      Int
+  disponible      Boolean  @default(true)
+  tags            String[] @default([])
+  descripcion     String?  @db.Text
+  stock           Int      @default(1)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Índices para mejorar el rendimiento de búsquedas y filtros
+  @@index([nombre])
+  @@index([tipo])
+  @@index([disponible])
+  @@map("games")
+}
