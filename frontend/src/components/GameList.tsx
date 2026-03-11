@@ -6,7 +6,7 @@ import GameForm from "./GameForm";
 import Inventario from "./Inventario";
 
 const TIPOS = [
-  "Estrategia","Familiar","Cooperativo","Party","Abstracto",
+  "Estrategia","Familiar","Cooperativo","Creativo","Party","Abstracto",
   "Rol","Cartas","Dados","Trivia","Deducción",
 ];
 const EDADES    = [3, 6, 8, 10, 12, 14, 18];
@@ -245,7 +245,7 @@ export default function GameList() {
           onCancel={() => { setShowForm(false); setEditGame(null); }} />
       )}
       {showInventario && (
-        <Inventario games={games} onClose={() => setShowInventario(false)} />
+        <Inventario onClose={() => setShowInventario(false)} />
       )}
     </>
   );

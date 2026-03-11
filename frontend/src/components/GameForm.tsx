@@ -9,7 +9,7 @@ interface Props {
 }
 
 const TIPOS = [
-  "Estrategia","Familiar","Cooperativo","Party","Abstracto",
+  "Estrategia","Familiar","Cooperativo","Creativo","Party","Abstracto",
   "Rol","Cartas","Dados","Trivia","Deducción",
 ];
 
